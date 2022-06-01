@@ -1,4 +1,4 @@
-package com.elsa.smart_buffet.pojo;
+package com.elsa.smart_buffet.pojo.ResultBox;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

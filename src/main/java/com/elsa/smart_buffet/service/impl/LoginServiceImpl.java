@@ -1,7 +1,7 @@
 package com.elsa.smart_buffet.service.impl;
 
 import com.elsa.smart_buffet.pojo.LoginUser;
-import com.elsa.smart_buffet.pojo.ResponseResult;
+import com.elsa.smart_buffet.pojo.ResultBox.ResponseResult;
 import com.elsa.smart_buffet.pojo.User;
 import com.elsa.smart_buffet.service.LoginService;
 import com.elsa.smart_buffet.utils.JwtUtil;
