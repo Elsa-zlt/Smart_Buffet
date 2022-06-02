@@ -1,5 +1,6 @@
 package com.elsa.smart_buffet.filter;
 
+import com.elsa.smart_buffet.pojo.LoginComsumer;
 import com.elsa.smart_buffet.pojo.LoginUser;
 import com.elsa.smart_buffet.utils.JwtUtil;
 import com.elsa.smart_buffet.utils.RedisCache;
@@ -44,14 +45,14 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         }
         //从redis中获取用户信息
         String redisKey = "login:" + userid;
-        LoginUser loginUser = redisCache.getCacheObject(redisKey);
-        if(Objects.isNull(loginUser)){
+        LoginComsumer loginComsumer = redisCache.getCacheObject(redisKey);
+        if(Objects.isNull(loginComsumer)){
             throw new RuntimeException("用户未登录");
         }
         //存入SecurityContextHolder
         // TODO 获取权限信息封装到Authentication中
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginUser, null, null);
+                new UsernamePasswordAuthenticationToken(loginComsumer, null, null);
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         //放行
         filterChain.doFilter(request, response);

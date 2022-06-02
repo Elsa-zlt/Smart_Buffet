@@ -1,5 +1,7 @@
 package com.elsa.smart_buffet.service.impl;
 
+import com.elsa.smart_buffet.pojo.Comsumer;
+import com.elsa.smart_buffet.pojo.LoginComsumer;
 import com.elsa.smart_buffet.pojo.LoginUser;
 import com.elsa.smart_buffet.pojo.ResultBox.ResponseResult;
 import com.elsa.smart_buffet.pojo.User;
@@ -27,10 +29,10 @@ public class LoginServiceImpl implements LoginService {
     private RedisCache redisCache;
 
     @Override
-    public ResponseResult login(User user) {
+    public ResponseResult loginComsumer(Comsumer comsumer) {
 
         // AuthenticationManager authenticate 进行用户认证
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(comsumer.getCName(), comsumer.getCPassword());
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
 
         // 如果没有通过，则给出对应的提示
@@ -39,14 +41,14 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // 认证通过，根据userid去生成一个jwt，jwt存入ResponseResult返回
-        LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
-        String userid = loginUser.getUser().getId().toString();
-        String jwt = JwtUtil.createJWT(userid);
+        LoginComsumer loginComsumer = (LoginComsumer) authenticate.getPrincipal();
+        String comsumerid = loginComsumer.getComsumer().getCId().toString();
+        String jwt = JwtUtil.createJWT(comsumerid);
         Map<String, String> map = new HashMap<>();
         map.put("token", jwt);
 
         // 把用户信息存入redis，userid做完key
-        redisCache.setCacheObject("login:" + userid, loginUser);
+        redisCache.setCacheObject("login:" + comsumerid, loginComsumer);
 //        System.out.println("login:" + userid);
 //        System.out.println(loginUser);
         return new ResponseResult(200, "登录成功", map);
@@ -56,8 +58,8 @@ public class LoginServiceImpl implements LoginService {
     public ResponseResult logout() {
         //获取SecurityContextHolder中的用户id
         UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-        Long userid = loginUser.getUser().getId();
+        LoginComsumer loginComsumer = (LoginComsumer) authentication.getPrincipal();
+        int userid = loginComsumer.getComsumer().getCId();
         //删除redis中的值
         redisCache.deleteObject("login:"+userid);
         return new ResponseResult(200,"注销成功");

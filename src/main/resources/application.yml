@@ -2,7 +2,7 @@ spring:
   main:
     allow-circular-references: true
   datasource:
-    url: jdbc:mysql://localhost:3306/sg_security?characterEncoding=utf-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/smart_restaruant?characterEncoding=utf-8&serverTimezone=UTC&useUnicode=true
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver

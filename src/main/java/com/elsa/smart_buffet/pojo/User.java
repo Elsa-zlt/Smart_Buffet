@@ -18,7 +18,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("sys_user")
+//@TableName("sys_user")
 public class User implements Serializable {
     private static final long serialVersionUID = -40356785423868312L;
     
