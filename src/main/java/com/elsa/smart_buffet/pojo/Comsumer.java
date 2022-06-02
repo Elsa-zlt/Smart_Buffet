@@ -34,5 +34,4 @@ public class Comsumer implements Serializable {
     @JsonProperty(value = "time")
     private Integer cTime;
 
-
 }

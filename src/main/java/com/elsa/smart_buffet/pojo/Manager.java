@@ -27,4 +27,5 @@ public class Manager implements Serializable {
 
     @JsonProperty(value = "telephone")
     private Integer maPhone;
+
 }
