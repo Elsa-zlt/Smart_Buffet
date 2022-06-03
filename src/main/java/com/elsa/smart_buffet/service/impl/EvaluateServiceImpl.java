@@ -37,4 +37,5 @@ public class EvaluateServiceImpl implements EvaluateService {
     public ResponseResult insertEvaluate(Evaluate evaluate) {
         return new ResponseResult(200, evaluateMapper.insert(evaluate));
     }
+
 }
