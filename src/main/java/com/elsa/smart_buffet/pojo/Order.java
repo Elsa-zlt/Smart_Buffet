@@ -12,8 +12,8 @@ import java.util.Date;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@TableName("order")
+//@NoArgsConstructor
+@TableName("order_com")
 public class Order implements Serializable {
 
     @TableId
@@ -31,5 +31,9 @@ public class Order implements Serializable {
 
     @JsonProperty("oStatus")
     private Integer oStatus;
+
+    public Order() {
+        this.oTime = new Date();
+    }
 
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
 
 import java.io.Serializable;
 
@@ -19,6 +20,9 @@ public class MenuOrder implements Serializable {
 
     @JsonProperty(value = "mId")
     private Integer mId;
+
+    @JsonProperty(value ="cId")
+    private Integer cId;
 
     @JsonProperty(value = "mName")
     private String mName;
