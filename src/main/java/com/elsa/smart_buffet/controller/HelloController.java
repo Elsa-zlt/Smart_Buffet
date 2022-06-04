@@ -10,7 +10,7 @@ public class HelloController {
 
     @RequestMapping("/hello")
     public String hello() {
-        return "hello";
+        return "Hello, welcome to the smart self-service catering system, please put the dishes under the camera to identify and order";
     }
 
 }
