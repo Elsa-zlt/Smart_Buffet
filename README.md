@@ -86,6 +86,7 @@
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | O\_id | string | 订单编号 | 否 | 10 | 否 | foreign key（Order:O\_id） |
 | M\_id | int | 菜品编号 | 否 | 10 | 否 | foreign key（Menu:M\_id） |
+| C\_id | int | 用户编号 | 否 | 10 | 否 | foreign key（Comsumer:C\_id） |
 | M\_name | varchar | 菜品名 | 否 | 30 | 否 | foreign key（Menu:M\_name） |
 | M0\_num | int | 菜品数量 | 否 | 10 | 否 | - |
 | MO\_price | double | 单菜品消费金额 | 否 | 10 | 否 | - |
