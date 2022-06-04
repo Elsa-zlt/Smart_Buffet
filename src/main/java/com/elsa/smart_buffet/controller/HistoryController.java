@@ -16,7 +16,7 @@ public class HistoryController {
     private HistoryService historyService;
 
     @GetMapping("/history/{cId}")
-    public List<String> selectOneByIdEvaluate(@PathVariable("cId") String cId) {
+    public List<String> selectOneByIdHistory(@PathVariable("cId") String cId) {
         return historyService.selectOneByIdHistory(cId);
     }
 

@@ -14,27 +14,27 @@ public class FeedbackController {
     private FeedbackService feedbackService;
 
     @GetMapping("/feedback/list")
-    public ResponseResult selectAllEvaluate() {
+    public ResponseResult selectAllFeedback() {
         return feedbackService.selectAllFeedback();
     }
 
     @GetMapping("/feedback/{id}")
-    public ResponseResult selectOneByIdEvaluate(@PathVariable("id") int id) {
+    public ResponseResult selectOneByIdFeedback(@PathVariable("id") int id) {
         return feedbackService.selectOneByIdFeedback(id);
     }
 
     @PutMapping("/feedback")
-    public ResponseResult updateEvaluate(@RequestBody Feedback feedback) {
+    public ResponseResult updateFeedback(@RequestBody Feedback feedback) {
         return feedbackService.updateFeedback(feedback);
     }
 
     @DeleteMapping("/feedback/{id}")
-    public ResponseResult deleteByIdEvaluate(@PathVariable int id) {
+    public ResponseResult deleteByIdFeedback(@PathVariable int id) {
         return  feedbackService.deleteByIdFeedback(id);
     }
 
     @PostMapping("/feedback")
-    public ResponseResult insertEvaluate(@RequestBody Feedback feedback) {
+    public ResponseResult insertFeedback(@RequestBody Feedback feedback) {
         return feedbackService.insertFeedback(feedback);
     }
 
