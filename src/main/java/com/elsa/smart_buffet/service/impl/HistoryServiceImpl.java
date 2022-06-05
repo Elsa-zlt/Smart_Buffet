@@ -41,6 +41,7 @@ public class HistoryServiceImpl implements HistoryService {
 
         list.add(history.getHHistory());
         redisCache.setCacheList(cId, list);
+        redisCache.expire(cId, 60 * 60 * 24 * 30);
         return new ResponseResult(200, list);
     }
 }
