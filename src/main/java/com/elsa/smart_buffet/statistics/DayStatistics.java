@@ -22,7 +22,7 @@ public class DayStatistics {
 
     public void dayStatistics(String oId) {
 
-        int dId = timeUtil.getTime();
+        int dId = timeUtil.getDayTime();
 
         Day day1 = dayMapper.selectById(dId);
 

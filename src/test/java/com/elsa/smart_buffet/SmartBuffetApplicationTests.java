@@ -3,6 +3,7 @@ package com.elsa.smart_buffet;
 import com.elsa.smart_buffet.mapper.*;
 import com.elsa.smart_buffet.pojo.*;
 import com.elsa.smart_buffet.utils.RedisCache;
+import com.elsa.smart_buffet.utils.TimeUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -82,20 +83,13 @@ class SmartBuffetApplicationTests {
 //        System.out.println(s);
     }
 
+    @Autowired
+    private TimeUtil timeUtil;
+
     @Test
     void dayTest(){
-        Date date = new Date();
-        int year = date.getYear();
-        year = year - 100;
-        year = 2000 + year;
-        year = year * 10000;
-        int month = date.getMonth() + 1;
-        month = month * 100;
-        int day = date.getDate();
-        System.out.println(year);
-        System.out.println(month);
-        System.out.println(day);
-        System.out.println(year + month + day);
+        System.out.println(timeUtil.getMonthTime());
+        System.out.println(timeUtil.getYearTime());
     }
 
     @Test
