@@ -5,6 +5,7 @@ import com.elsa.smart_buffet.mapper.OrderMapper;
 import com.elsa.smart_buffet.pojo.MenuOrder;
 import com.elsa.smart_buffet.pojo.Order;
 import com.elsa.smart_buffet.pojo.ResultBox.ResponseResult;
+import com.elsa.smart_buffet.service.MessageService;
 import com.elsa.smart_buffet.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ import java.util.Map;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    @Autowired
+    private MessageService messageService;
 
     @Autowired
     private MenuOrderMapper menuOrderMapper;
@@ -74,9 +78,16 @@ public class OrderServiceImpl implements OrderService {
             menuOrder.setMoPrice(Double.parseDouble(moPrice));
 
             System.out.println(menuOrder);
-            menuOrderMapper.insert(menuOrder);
+//            menuOrderMapper.insert(menuOrder);
 
         }
+
+        System.out.println("订单开始统计数据处理");
+
+        // 短信消息处理
+        messageService.sendMessage(menuOrder.getOId());
+
+        System.out.println("订单结束统计数据处理");
 
         return new ResponseResult(200, "成功保存订单数据");
     }

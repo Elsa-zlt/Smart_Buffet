@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @SpringBootTest
 class SmartBuffetApplicationTests {
+
+    @Autowired
+    private OrderMapper orderMapper;
+
+    @Autowired
+    private DayMapper dayMapper;
 
     @Autowired
     private ComsumerMapper comsumerMapper;
@@ -77,6 +80,42 @@ class SmartBuffetApplicationTests {
 //        redisCache.setCacheObject("1","Elsa");
 //        String s = redisCache.getCacheObject("1");
 //        System.out.println(s);
+    }
+
+    @Test
+    void dayTest(){
+        Date date = new Date();
+        int year = date.getYear();
+        year = year - 100;
+        year = 2000 + year;
+        year = year * 10000;
+        int month = date.getMonth() + 1;
+        month = month * 100;
+        int day = date.getDate();
+        System.out.println(year);
+        System.out.println(month);
+        System.out.println(day);
+        System.out.println(year + month + day);
+    }
+
+    @Test
+    void testOrder() {
+        Date date = new Date();
+        int year = date.getYear();
+        year = year - 100;
+        year = 2000 + year;
+        year = year * 10000;
+        int month = date.getMonth() + 1;
+        month = month * 100;
+        int day = date.getDate();
+        System.out.println(year + month + day);
+        int dId = year + month + day;
+        Day day1 = dayMapper.selectById(dId);
+        if(day1 == null) {
+            System.out.println("day 为空");
+            Order order = orderMapper.selectById(4);
+            System.out.println(order);
+        }
     }
 
 }
