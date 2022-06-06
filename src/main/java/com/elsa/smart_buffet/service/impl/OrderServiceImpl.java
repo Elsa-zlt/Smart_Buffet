@@ -78,13 +78,13 @@ public class OrderServiceImpl implements OrderService {
             menuOrder.setMoPrice(Double.parseDouble(moPrice));
 
             System.out.println(menuOrder);
-//            menuOrderMapper.insert(menuOrder);
+            menuOrderMapper.insert(menuOrder);
 
         }
 
         System.out.println("订单开始统计数据处理");
 
-        // 短信消息处理
+        // 订单消息处理
         messageService.sendMessage(menuOrder.getOId());
 
         System.out.println("订单结束统计数据处理");
